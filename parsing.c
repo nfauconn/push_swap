@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int		main(int argc, char **argv)
+int		main()
 {
 	write(1, "ok\n", 3);
 /*	if (argc <= 1)
@@ -11,4 +11,5 @@ int		main(int argc, char **argv)
 			parse argv[1]
 	}
 */
+return (0);
 }
