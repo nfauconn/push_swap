@@ -1,15 +1,36 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/29 15:25:39 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/06/30 14:11:50 by nfauconn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		main()
+
+int		main(int argc, char **argv)
 {
-	write(1, "ok\n", 3);
-/*	if (argc <= 1)
+
+/*	if (argc < 1)
+		ERROR sortie d'erreur
+	if (argc == 1)
 		return (0);
 	if (argc == 2)
 	{
 		if (argv[1])
 			parse argv[1]
+		{
+
+		}
+	}
+	if (argc > 2)
+	{
+
 	}
 */
 return (0);
 }
+
