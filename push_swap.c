@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 15:23:39 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/07/14 15:42:49 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/06/29 15:25:39 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/07/14 16:17:11 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <ctype.h>
-# include <string.h>
-# include <stdio.h>
-
-typedef struct s_move
+int		main(int argc, char **argv)
 {
+	t_data	*data;
+	
+	data = NULL;
+	if (argc < 2)
+		return (1);
+	init_data(data, argv);
+	fill_data(data, argv);
+	
+	return (0);
+}
 
-}				t_move;
-
-typedef struct	s_data
-{
-	char	**argv;
-
-
-}				t_data;
-
-int		main(int argc, char **argv);
-
-#endif

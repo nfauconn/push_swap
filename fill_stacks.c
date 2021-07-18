@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   fill_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 15:25:39 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/06/30 14:11:50 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/07/13 15:49:56 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/07/14 15:42:54 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-int		main(int argc, char **argv)
+void	fill_a(t_data *data, char **argv)
 {
-
-/*	if (argc < 1)
-		ERROR sortie d'erreur
-	if (argc == 1)
-		return (0);
-	if (argc == 2)
+	int		i;
+	
+	i = 0;
+	while (*argv[1])
 	{
-		if (argv[1])
-			parse argv[1]
-		{
-
-		}
+		
 	}
-	if (argc > 2)
-	{
-
-	}
-*/
-return (0);
 }
 
+void	fill_stacks(t_data *data, char **argv)
+{
+	if (!find_error(data, argv))
+		ft_atoi(*argv);
+	
+}
