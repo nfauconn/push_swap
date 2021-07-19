@@ -6,14 +6,16 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 17:58:26 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/07/14 16:54:16 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/07/19 16:08:43 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stacks(t_data *data, char **argv)
+void	init_stacks(t_data *root, char **argv)
 {
-	data->argv = argv;
-	data->str = NULL;
+	if (!(root = (t_data*)malloc(sizeof(t_data))))
+		exit(1);
+	
+	
 }

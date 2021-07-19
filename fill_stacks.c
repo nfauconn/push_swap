@@ -14,18 +14,10 @@
 
 void	fill_a(t_data *data, char **argv)
 {
-	int		i;
-	
-	i = 0;
-	while (*argv[1])
-	{
-		
-	}
+
 }
 
-void	fill_stacks(t_data *data, char **argv)
+void	fill_data(t_data *data, char **argv)
 {
-	if (!find_error(data, argv))
-		ft_atoi(*argv);
 	
 }
