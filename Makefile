@@ -1,6 +1,9 @@
 NAME	=	push_swap
 
-SRCS		=	parsing.c
+SRCS	=	push_swap.c\
+			init.c\
+			fill_data.c\
+			error.c\
 
 OPTION	=	-I includes -I libft
 

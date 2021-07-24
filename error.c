@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_stacks.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/13 15:49:56 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/07/14 15:42:54 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/07/20 12:27:19 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/07/24 16:59:27 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_a(t_data *data, char **argv)
+void	error(t_data *data)
 {
-
-}
-
-void	fill_data(t_data *data, char **argv)
-{
-	
+	write(2, "Error\n", 6);
+	if (data)
+		free(data);
+	exit(EXIT_FAILURE);
 }
