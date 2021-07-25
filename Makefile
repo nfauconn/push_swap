@@ -1,9 +1,10 @@
 NAME	=	push_swap
 
-SRCS	=	push_swap.c\
-			init.c\
-			fill_data.c\
+SRCS	=	atoi_push_swap.c\
 			error.c\
+			init.c\
+			parse.c\
+			push_swap.c\
 
 OPTION	=	-I includes -I libft
 
