@@ -22,8 +22,8 @@ static void		put_in_stack(t_data *data, char *nb, int neg)
 	int	val;
 
 	val = atoi_push_swap(data, nb, neg);
-	printf("val = %d\n", val);
-//	data->stack_len++ segfault??????????????!!!!!!!!!!!!;
+	insert_end(data, 'a', val);
+	data->stack_len++;
 }
 
 static void		fill_a(t_data *data, char *s)
@@ -35,7 +35,6 @@ static void		fill_a(t_data *data, char *s)
 	tmp = NULL;
 	while (*s)
 	{
-		printf("boucle ok'\n");
 		while (*s == '+' || *s == '-' || *s == 32 || (*s >= 9 && *s <= 13))
 		{	
 			if (*s == '-')
@@ -48,7 +47,6 @@ static void		fill_a(t_data *data, char *s)
 			while(ft_isdigit(*s))
 				s++;
 			put_in_stack(data, ft_substr(tmp, 0, s - tmp), neg);
-			printf("reste a parser : %s\n", s);
 		}
 	}
 }

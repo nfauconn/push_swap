@@ -1,6 +1,7 @@
 NAME	=	push_swap
 
-SRCS	=	atoi_push_swap.c\
+SRCS	=	insert_end.c\
+			atoi_push_swap.c\
 			error.c\
 			init.c\
 			parse.c\
