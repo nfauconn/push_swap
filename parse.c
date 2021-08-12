@@ -12,18 +12,24 @@
 
 #include "push_swap.h"
 
-/*static int		duplicate(t_data *data)
+static void		check_duplicate(t_data *data, t_elem *stack, int val)
 {
-	
-}*/
+	while (stack->next != data->start_a)
+	{
+		if (stack->value == val)
+			error(data);
+		stack = stack->next;
+	}
+}
 
 static void		put_in_stack(t_data *data, char *nb, int neg)
 {
 	int	val;
 
-	val = atoi_push_swap(data, nb, neg);
+	val = atoi_pushswap(data, nb, neg);
 	insert_end(data, 'a', val);
-	data->stack_len++;
+	if (data->stack_len++ > 1)
+		check_duplicate(data, data->start_a, val);
 }
 
 static void		fill_a(t_data *data, char *s)
@@ -47,23 +53,36 @@ static void		fill_a(t_data *data, char *s)
 			while(ft_isdigit(*s))
 				s++;
 			put_in_stack(data, ft_substr(tmp, 0, s - tmp), neg);
+			if (*s && ((*s != 32) || (*s < 9 && *s > 13)))
+				error(data);
 		}
 	}
 }
 
-static void		check_valid_char(t_data *data, char *s)
+static void		check_valid_char(t_data *data)
 {
-	int	i;
+	char	*s;
+	int		i;
 
-	i = 0;
-	while (s[i] && (ft_isdigit(s[i])
-				|| (s[i] == '+' && ft_isdigit(s[i+1])) 
-				|| (s[i] == '-' && ft_isdigit(s[i+1]))
-				|| s[i] == 32 || (s[i] >= 9 && s[i] <= 13)))
-		i++;
-	if (s[i])
-		error(data);
-	return ;
+	i = 1;
+	s = data->argv[i];
+	while (s)
+	{
+		while (*s)
+		{
+			if (*s == ' ' || ft_isdigit(*s))
+				s++;
+			else if (*s == '-' && ft_isdigit(*(s + 1)) &&
+						(s == data->argv[i] || *(s - 1) == ' '))
+				s++;
+			else if (*s == '+' && ft_isdigit(*(s + 1)) &&
+						(s == data->argv[i] || *(s - 1) == ' '))
+				s++;
+			else
+				error(data);
+		}
+		s = data->argv[++i];
+	}
 }
 
 void			parse(t_data *data, char **argv)
@@ -71,9 +90,9 @@ void			parse(t_data *data, char **argv)
 	int	i;
 
 	i = 1;
+	check_valid_char(data);
 	while (argv[i])
 	{
-		check_valid_char(data, argv[i]);
 		fill_a(data, argv[i]);
 		i++;
 	}

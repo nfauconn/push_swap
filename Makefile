@@ -1,11 +1,25 @@
 NAME	=	push_swap
 
-SRCS	=	insert_end.c\
-			atoi_push_swap.c\
+SRCS	=	annex_sorted_array.c\
+			atoi_pushswap.c\
+			cdbll_len.c\
+			do_push.c\
+			do_rotate.c\
+			do_reverse_rotate.c\
+			do_swap.c\
 			error.c\
+			find_max_min.c\
+			find_median.c\
+			free_pushswap.c\
 			init.c\
+			insert_end_stack.c\
+			insert_or_del_top_stack.c\
+			moves.c\
 			parse.c\
 			push_swap.c\
+			sort_less_5.c\
+			sort_less_100.c\
+			sorted.c\
 
 OPTION	=	-I includes -I libft
 

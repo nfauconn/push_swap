@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   do_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/20 12:27:19 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/09 16:43:18 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/10 16:27:30 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/11 14:45:58 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(t_data *data)
+void	reverse_rotate_a(t_data *data)
 {
-	write(2, "Error\n", 6);
-	free_pushswap(data);
-	exit(EXIT_FAILURE);
+	if (data->start_a)
+		data->start_a = data->start_a->prev;
+	write(1, "rra\n", 4);
 }

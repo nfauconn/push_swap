@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   do_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/20 12:27:19 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/09 16:43:18 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/10 16:47:11 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/11 21:18:25 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(t_data *data)
+void	push_top_b_to_a(t_data *data)
 {
-	write(2, "Error\n", 6);
-	free_pushswap(data);
-	exit(EXIT_FAILURE);
+	int	tmp;
+
+	if (data->start_b)
+	{
+		tmp = data->start_b->value;
+		del_top(data, 'b');
+		insert_top(data, 'a', tmp);
+	}
+	write(1, "pa\n", 3);
+}
+
+void	push_top_a_to_b(t_data *data)
+{
+	int	tmp;
+
+	if (data->start_a)
+	{
+		tmp = data->start_a->value;
+		del_top(data, 'a');
+		insert_top(data, 'b', tmp);
+	}
+	write(1, "pb\n", 3);
 }

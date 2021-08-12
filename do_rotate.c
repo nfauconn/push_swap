@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   do_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/20 12:27:19 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/09 16:43:18 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/10 17:26:36 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/11 14:46:14 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(t_data *data)
+void	rotate_a(t_data *data)
 {
-	write(2, "Error\n", 6);
-	free_pushswap(data);
-	exit(EXIT_FAILURE);
+	if (data->start_a)
+		data->start_a = data->start_a->next;
+	write(1, "ra\n", 3);
+}
+
+void	rotate_b(t_data *data)
+{
+	if (data->start_b)
+		data->start_b = data->start_b->next;
+	write(1, "rb\n", 3);
 }

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/20 12:27:19 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/09 16:43:18 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/10 16:15:14 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/11 22:02:33 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(t_data *data)
+int		big_to_end(t_elem *end, int max)
 {
-	write(2, "Error\n", 6);
-	free_pushswap(data);
-	exit(EXIT_FAILURE);
+	t_elem	*tmp;
+	int		nb_rra;
+
+	nb_rra = 0;
+	if (end)
+	{
+		tmp = end->prev;
+		while (tmp->value != max)
+		{
+			nb_rra++;
+			tmp = tmp->prev;
+		}
+		nb_rra++;
+	}
+	return (nb_rra);
 }

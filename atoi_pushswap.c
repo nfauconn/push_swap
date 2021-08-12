@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   atoi_pushswap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/20 12:27:19 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/09 16:43:18 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/07/25 12:37:52 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/09 17:38:21 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(t_data *data)
+int		atoi_pushswap(t_data *data, const char *s, int neg)
 {
-	write(2, "Error\n", 6);
-	free_pushswap(data);
-	exit(EXIT_FAILURE);
+	int					sign;
+	long long			nbr;
+
+	sign = 1;
+	nbr = 0;
+	if (neg)
+		sign *= -1;
+	while (*s >= '0' && *s <= '9')
+	{
+		nbr = (nbr * 10) + (*s - '0');
+		s++;
+	}
+	if (nbr > 2147483647)
+	{
+		if (nbr == 2147483648 && sign == -1)
+			return(-2147483648);
+		error(data);
+	}
+	return ((int)(nbr * sign));
 }

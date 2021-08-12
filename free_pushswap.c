@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi_push_swap.c                                   :+:      :+:    :+:   */
+/*   free_pushswap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/25 12:37:52 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/07/28 18:16:47 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/09 16:43:32 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/11 14:46:14 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		atoi_push_swap(t_data *data, const char *s, int neg)
+static void		free_list(t_elem *list)
 {
-	int					sign;
-	long long			nbr;
+	t_elem	*tmp;
+	t_elem	*to_free;
 
-	sign = 1;
-	nbr = 0;
-	if (neg)
-		sign *= -1;
-	while (*s >= '0' && *s <= '9')
+	tmp = list->next;
+	while (tmp != list)
 	{
-		nbr = (nbr * 10) + (*s - '0');
-		s++;
+		to_free = tmp;
+		tmp = tmp->next;
+		free(to_free);
 	}
-	if (nbr > 2147483647)
+	free(tmp);
+}
+
+void			free_pushswap(t_data *data)
+{
+	if (data)
 	{
-		if (nbr == 2147483648 && sign == -1)
-			return(-2147483648);
-		error(data);
+		if (data->start_a)
+			free_list(data->start_a);
+		if (data->start_b)
+			free_list(data->start_b);
+		if (data->sorted_array)
+			free(data->sorted_array);
 	}
-	return ((int)(nbr * sign));
 }
