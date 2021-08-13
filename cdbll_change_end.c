@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_end_stack.c                                 :+:      :+:    :+:   */
+/*   cdbll_change_end.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:26:06 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/11 14:46:14 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:46:02 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_end(t_data *data, char stack, int val)
+void	insert_end(t_data *data, char pile_name, int val)
 {
-	t_elem	**end;
 	t_elem	*new;
+	t_elem	**end;
 
-	if (stack == 'a')
+	if (pile_name == 'a')
 		end = &data->start_a;
 	else
 		end = &data->start_b;
 	if (*end)
 	{
-		if (!(new = (t_elem*)malloc(sizeof(t_elem))))
+		new = (t_elem*)malloc(sizeof(t_elem));
+		if (!new)
 			error(data);
 		new->next = (*end);
 		new->prev = (*end)->prev;
@@ -33,7 +34,8 @@ void	insert_end(t_data *data, char stack, int val)
 	}
 	else
 	{
-		if (!(*end = (t_elem*)malloc(sizeof(t_elem))))
+		*end = (t_elem*)malloc(sizeof(t_elem));
+		if (!*end)
 			error(data);
 		(*end)->next = *end;
 		(*end)->prev = *end;

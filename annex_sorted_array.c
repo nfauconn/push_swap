@@ -6,25 +6,26 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:18:28 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/11 21:18:15 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:42:44 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			*annex_sorted_array(t_data *data, int len, char stack)
+int	*annex_sorted_array(t_data *data, int len, char pile_name)
 {
 	int		i;
 	int		*sorted_array;
 	t_elem	*tmp;
 
 	i = 0;
-	if (!(sorted_array = (int*)malloc(sizeof(int) * (len))))
+	sorted_array = (int*)malloc(sizeof(int) * (len));
+	if (!sorted_array)
 		error(data);
-	if (stack == 'a')
-		tmp = data->start_a->next;
+	if (pile_name == 'a')
+		tmp = data->start_a;
 	else
-		tmp = data->start_b->next;
+		tmp = data->start_b;
 	while (i < len)
 	{	
 		sorted_array[i] = tmp->value;

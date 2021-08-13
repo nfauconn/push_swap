@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-static void		check_duplicate(t_data *data, t_elem *stack, int val)
+static void		check_duplicate(t_data *data, t_elem *elem, int val)
 {
-	while (stack->next != data->start_a)
+	while (elem->next != data->start_a)
 	{
-		if (stack->value == val)
+		if (elem->value == val)
 			error(data);
-		stack = stack->next;
+		elem = elem->next;
 	}
 }
 
@@ -28,7 +28,7 @@ static void		put_in_stack(t_data *data, char *nb, int neg)
 
 	val = atoi_pushswap(data, nb, neg);
 	insert_end(data, 'a', val);
-	if (data->stack_len++ > 1)
+	if (data->pile_len++ > 1)
 		check_duplicate(data, data->start_a, val);
 }
 
@@ -50,7 +50,7 @@ static void		fill_a(t_data *data, char *s)
 		if (ft_isdigit(*s))
 		{
 			tmp = s;
-			while(ft_isdigit(*s))
+			while (ft_isdigit(*s))
 				s++;
 			put_in_stack(data, ft_substr(tmp, 0, s - tmp), neg);
 			if (*s && ((*s != 32) || (*s < 9 && *s > 13)))
@@ -61,8 +61,8 @@ static void		fill_a(t_data *data, char *s)
 
 static void		check_valid_char(t_data *data)
 {
-	char	*s;
 	int		i;
+	char	*s;
 
 	i = 1;
 	s = data->argv[i];

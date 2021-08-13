@@ -6,13 +6,13 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 12:37:52 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/09 17:38:21 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:49:54 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		atoi_pushswap(t_data *data, const char *s, int neg)
+int	atoi_pushswap(t_data *data, const char *s, int neg)
 {
 	int					sign;
 	long long			nbr;

@@ -6,13 +6,13 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 12:01:11 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/11 17:02:56 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:53:52 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_2first_a(t_data *data)
+void	swap_top_a(t_data *data)
 {
 	int	tmp;
 
@@ -25,7 +25,7 @@ void	swap_2first_a(t_data *data)
 	write(1, "sa\n", 3);
 }
 
-void	swap_2first_b(t_data *data)
+void	swap_top_b(t_data *data)
 {
 	int	tmp;
 

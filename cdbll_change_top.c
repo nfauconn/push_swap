@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_or_del_top_stack.c                          :+:      :+:    :+:   */
+/*   cdbll_change_top.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 16:52:41 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/11 21:17:15 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:46:02 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	del_top(t_data *data, char stack)
+void	del_top(t_data *data, char pile_name)
 {
-	t_elem		**top;
-	t_elem		*tmp;
+	t_elem	*tmp;
+	t_elem	**top;
 
-	if (stack == 'a')
+	if (pile_name == 'a')
 		top = &data->start_a;
 	else
 		top = &data->start_b;
@@ -39,29 +39,31 @@ void	del_top(t_data *data, char stack)
 	}
 }
 
-void	insert_top(t_data *data, char stack, int val)
+void	insert_top(t_data *data, char pile_name, int val)
 {
-	t_elem		**top;
-	t_elem		*tmp;
+	t_elem	*new;
+	t_elem	**top;
 
-	if (stack == 'a')
+	if (pile_name == 'a')
 		top = &data->start_a;
 	else
 		top = &data->start_b;
 	if (*top)
 	{
-		if (!(tmp = (t_elem *)malloc(sizeof(t_elem))))
+		new = (t_elem *)malloc(sizeof(t_elem));
+		if (!new)
 			error(data);
-		tmp->next = *top;
-		tmp->prev = (*top)->prev;
-		(*top)->prev = tmp;
-		tmp->prev->next = tmp;
-		tmp->value = val;
+		new->next = *top;
+		new->prev = (*top)->prev;
+		(*top)->prev = new;
+		new->prev->next = new;
+		new->value = val;
 		*top = (*top)->prev;
 	}
 	else
 	{
-		if (!(*top = (t_elem *)malloc(sizeof(t_elem))))
+		*top = (t_elem *)malloc(sizeof(t_elem));
+		if (!top)
 			error(data);
 		(*top)->next = *top;
 		(*top)->prev = *top;
