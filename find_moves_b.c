@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_fewer_moves.c                                  :+:      :+:    :+:   */
+/*   moves_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 16:15:14 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/13 14:06:40 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/13 17:51:28 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/14 10:46:27 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	moves_min(t_data *data)
 	tmp = data->start_b;
 	if (tmp)
 	{
-		moves_to_start(data, 'b', 1);
-		moves_to_end(data, 'b', 1);
-		if (data->min_to_start <= data->min_to_end)
-			data->min_to_end = -1;
+		moves_up_to_top(data, 'b', 1);
+		moves_down_to_top(data, 'b', 1);
+		if (data->min_up_to_top <= data->min_down_to_top)
+			data->min_down_to_top = -1;
 		else
-			data->min_to_start = -1;
+			data->min_up_to_top = -1;
 	}
 }
 
@@ -35,40 +35,43 @@ static void	moves_max(t_data *data)
 	tmp = data->start_b;
 	if (tmp)
 	{
-		moves_to_start(data, 'b', 2);
-		moves_to_end(data, 'b', 2);
-		if (data->max_to_start <= data->max_to_end)
-			data->max_to_end = -1;
+		moves_up_to_top(data, 'b', 2);
+		moves_down_to_top(data, 'b', 2);
+		if (data->max_up_to_top <= data->max_down_to_top)
+			data->max_down_to_top = -1;
 		else
-			data->max_to_start = -1;
+			data->max_up_to_top = -1;
 	}
 }
 
-/*
-** Calculates which has fewest moves to push to list a:
-** the data->max or data->min integer in list b,
-** either by rotating to the top or reverse rotating to the end.
-*/
+static void	find_chosen(t_data *data)
+{
+	int	mi_u;
+	int	mi_d;
+	int	ma_u;
+	int	ma_d;
 
-void		find_fewer_moves_b(t_data *data)
+	mi_u = data->min_up_to_top;
+	mi_d = data->min_down_to_top;
+	ma_u = data->max_up_to_top;
+	ma_d = data->max_down_to_top;
+	if (ma_u != -1 && (ma_u >= mi_u && ma_u >= mi_d))
+		data->max_up_to_top = -1;
+	else if (ma_d != -1 && (ma_d >= mi_u && ma_d >= mi_d))
+		data->max_down_to_top = -1;
+	else if (mi_u != -1 && (mi_u >= ma_u && mi_u >= ma_d))
+		data->min_up_to_top = -1;
+	else if (mi_d != -1 && (mi_d >= ma_u && mi_d >= ma_d))
+		data->min_down_to_top = -1;
+}
+
+void	find_shortest_move(t_data *data)
 {
 	moves_min(data);
 	moves_max(data);
-	if (data->max_to_start != -1 && (data->max_to_start >= data->min_to_start && 
-										data->max_to_start >= data->min_to_end))
-		data->max_to_start = -1;
-	else if (data->max_to_end != -1 && (data->max_to_end >= data->min_to_start &&
-										data->max_to_end >= data->min_to_end))
-		data->max_to_end = -1;
-	else if (data->min_to_start != -1 && (data->min_to_start >= data->max_to_start &&
-										data->min_to_start >= data->max_to_end))
-		data->min_to_start = -1;
-	else if (data->min_to_end != -1 && (data->min_to_end >= data->max_to_start &&
-										data->min_to_end >= data->max_to_end))
-		data->min_to_end = -1;
-	if (data->min_to_start != -1 || data->min_to_end != -1)
+	find_chosen(data);
+	if (data->min_up_to_top != -1 || data->min_down_to_top != -1)
 		data->min_chosen = 1;
-	else if (data->max_to_start != -1 || data->max_to_end != -1)
+	else if (data->max_up_to_top != -1 || data->max_down_to_top != -1)
 		data->max_chosen = 1;
 }
-

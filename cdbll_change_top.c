@@ -6,7 +6,7 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 16:52:41 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/13 13:46:02 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/24 16:58:28 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,28 @@ void	del_top(t_data *data, char pile_name)
 	}
 }
 
+static void	insert_new(t_data *data, char pile_name, int val)
+{
+	t_elem	**top;
+	t_elem	*new;
+
+	if (pile_name == 'a')
+		top = &data->start_a;
+	else
+		top = &data->start_b;
+	new = (t_elem *)malloc(sizeof (t_elem));
+	if (!new)
+		error(data);
+	new->next = *top;
+	new->prev = (*top)->prev;
+	(*top)->prev = new;
+	new->prev->next = new;
+	new->value = val;
+	*top = (*top)->prev;
+}
+
 void	insert_top(t_data *data, char pile_name, int val)
 {
-	t_elem	*new;
 	t_elem	**top;
 
 	if (pile_name == 'a')
@@ -49,17 +68,7 @@ void	insert_top(t_data *data, char pile_name, int val)
 	else
 		top = &data->start_b;
 	if (*top)
-	{
-		new = (t_elem *)malloc(sizeof(t_elem));
-		if (!new)
-			error(data);
-		new->next = *top;
-		new->prev = (*top)->prev;
-		(*top)->prev = new;
-		new->prev->next = new;
-		new->value = val;
-		*top = (*top)->prev;
-	}
+		insert_new(data, pile_name, val);
 	else
 	{
 		*top = (t_elem *)malloc(sizeof(t_elem));

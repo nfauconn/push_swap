@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cdbll_is_sorted.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 15:05:36 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/24 16:59:25 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/06/29 15:25:39 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/25 13:48:19 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_data *data)
+static void	push_swap(t_data *data)
 {
-	t_elem	*tmp;
+	parse(data);
+	if (is_sorted(data))
+		return ;
+	if (data->pile_len <= 5)
+		sort_less_5(data);
+	else if (data->pile_len <= 40)
+		sort_less_40(data);
+	else
+		sort_more_40(data);
+}
 
-	if (!data->start_a || data->start_b)
-		error(data);
-	tmp = data->start_a;
-	while (tmp->next != data->start_a)
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
+	data = NULL;
+	if (argc >= 2)
 	{
-		if (tmp->value > tmp->next->value)
-			return (0);
-		tmp = tmp->next;
+		data = init_data(data, argv);
+		push_swap(data);
 	}
-	return (1);
+	free_pushswap(data);
+	return (0);
 }

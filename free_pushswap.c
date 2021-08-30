@@ -6,13 +6,13 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 16:43:32 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/11 14:46:14 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/24 17:26:43 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		free_list(t_elem *list)
+static void	free_list(t_elem *list)
 {
 	t_elem	*tmp;
 	t_elem	*to_free;
@@ -27,7 +27,7 @@ static void		free_list(t_elem *list)
 	free(tmp);
 }
 
-void			free_pushswap(t_data *data)
+void	free_pushswap(t_data *data)
 {
 	if (data)
 	{
@@ -35,7 +35,6 @@ void			free_pushswap(t_data *data)
 			free_list(data->start_a);
 		if (data->start_b)
 			free_list(data->start_b);
-		if (data->sorted_array)
-			free(data->sorted_array);
+		free(data);
 	}
 }

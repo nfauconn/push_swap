@@ -6,7 +6,7 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 12:01:11 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/08/13 10:53:52 by nfauconn         ###   ########.fr       */
+/*   Updated: 2021/08/24 17:01:37 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	swap_top_a(t_data *data)
 		data->start_a->value = data->start_a->next->value;
 		data->start_a->next->value = tmp;
 	}
-	write(1, "sa\n", 3);
+	if (data->do_write)
+		write(1, "sa\n", 3);
 }
 
 void	swap_top_b(t_data *data)
@@ -35,5 +36,16 @@ void	swap_top_b(t_data *data)
 		data->start_b->value = data->start_b->next->value;
 		data->start_b->next->value = tmp;
 	}
-	write(1, "sb\n", 3);
+	if (data->do_write)
+		write(1, "sb\n", 3);
+}
+
+void	swap_a_swap_b(t_data *data)
+{
+	data->do_write = 0;
+	swap_top_a(data);
+	swap_top_b(data);
+	data->do_write = 1;
+	if (data->do_write)
+		write(1, "ss\n", 3);
 }

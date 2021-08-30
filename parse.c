@@ -1,47 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/13 15:49:56 by nfauconn          #+#    #+#             */
-/*   Updated: 2021/07/24 17:56:48 by nfauconn         ###   ########.fr       */
+/*   Created: 2021/08/23 20:29:57 by nfauconn          #+#    #+#             */
+/*   Updated: 2021/08/25 11:41:30 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		check_duplicate(t_data *data, t_elem *elem, int val)
+static int	find_duplicate(t_data *data, int val)
 {
-	while (elem->next != data->start_a)
+	t_elem	*elem;
+	t_elem	*end;
+
+	elem = data->start_a;
+	end = data->start_a;
+	while (elem->next != end)
 	{
 		if (elem->value == val)
-			error(data);
+			return (0);
 		elem = elem->next;
 	}
+	return (1);
 }
 
-static void		put_in_stack(t_data *data, char *nb, int neg)
+static int	put_in_pile(t_data *data, char *nb, int neg)
 {
-	int	val;
+	long	val;
+	int		ok;
 
-	val = atoi_pushswap(data, nb, neg);
+	val = ft_atoi(nb, neg);
+	if (val == INT_MAX)
+		return (0);
 	insert_end(data, 'a', val);
-	if (data->pile_len++ > 1)
-		check_duplicate(data, data->start_a, val);
+	data->pile_len++;
+	ok = find_duplicate(data, val);
+	if (!ok)
+		return (0);
+	return (1);
 }
 
-static void		fill_a(t_data *data, char *s)
+static void	fill_a(t_data *data, char *s)
 {
 	int		neg;
 	char	*tmp;
-	
-	neg = 0;
+	char	*buf;
+	int		ok = 0;
+
 	tmp = NULL;
 	while (*s)
 	{
-		while (*s == '+' || *s == '-' || *s == 32 || (*s >= 9 && *s <= 13))
+		neg = 0;
+		while (*s == '+' || *s == '-' || *s == ' ')
 		{	
 			if (*s == '-')
 				neg = 1;
@@ -52,48 +66,51 @@ static void		fill_a(t_data *data, char *s)
 			tmp = s;
 			while (ft_isdigit(*s))
 				s++;
-			put_in_stack(data, ft_substr(tmp, 0, s - tmp), neg);
-			if (*s && ((*s != 32) || (*s < 9 && *s > 13)))
+			buf = ft_substr(tmp, 0, s - tmp);
+			ok = put_in_pile(data, buf, neg);
+			if (!ok)
+			{
+				free(buf);
+				error(data);
+			}
+			free (buf);
+			if (*s && ((*s != ' ')))
 				error(data);
 		}
 	}
 }
 
-static void		check_valid_char(t_data *data)
+static void	check_valid_args(t_data *data, char	*s)
 {
-	int		i;
-	char	*s;
-
-	i = 1;
-	s = data->argv[i];
-	while (s)
+	while (*s == ' ')
+		s++;
+	if (!*s)
+		error(data);
+	while (*s)
 	{
-		while (*s)
+		if (*s == ' ' || ft_isdigit(*s))
+			s++;
+		else if (*s == '-' || *s == '+')
 		{
-			if (*s == ' ' || ft_isdigit(*s))
-				s++;
-			else if (*s == '-' && ft_isdigit(*(s + 1)) &&
-						(s == data->argv[i] || *(s - 1) == ' '))
-				s++;
-			else if (*s == '+' && ft_isdigit(*(s + 1)) &&
-						(s == data->argv[i] || *(s - 1) == ' '))
-				s++;
-			else
+			s++;
+			if (!ft_isdigit(*s))
 				error(data);
+			s++;
 		}
-		s = data->argv[++i];
+		else
+			error(data);
 	}
 }
 
-void			parse(t_data *data, char **argv)
+void	parse(t_data *data)
 {
 	int	i;
 
 	i = 1;
-	check_valid_char(data);
-	while (argv[i])
+	while (data->argv[i])
 	{
-		fill_a(data, argv[i]);
+		check_valid_args(data, data->argv[i]);
+		fill_a(data, data->argv[i]);
 		i++;
 	}
 }
