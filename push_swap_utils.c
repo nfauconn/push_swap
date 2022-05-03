@@ -17,7 +17,7 @@ int	ft_isdigit(int c)
 	return (c >= '0' && c <= '9');
 }
 
-long	ft_atoi(const char *s, int neg)
+int	ft_atoi(t_data *data, const char *s, int neg)
 {
 	int					sign;
 	long long			nbr;
@@ -35,9 +35,9 @@ long	ft_atoi(const char *s, int neg)
 	{
 		if (nbr == 2147483648 && sign == -1)
 			return (-2147483648);
-		return (INT_MAX);
+		error(data);
 	}
-	return ((long)(nbr * sign));
+	return ((int)(nbr * sign));
 }
 
 static size_t	ft_strlen(const char *str)

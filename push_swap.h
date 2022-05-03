@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
 typedef struct s_elem
 {
@@ -56,7 +55,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 t_data	*init_data(t_data *data, char **argv);
 void	insert_top(t_data *data, char pile_name, int val);
 void	insert_end(t_data *data, char pile_name, int val);
-long		ft_atoi(const char *s, int neg);
+int		ft_atoi(t_data *data, const char *s, int neg);
 int		ft_isdigit(int c);
 int		is_sorted(t_data *data);
 int		main(int argc, char **argv);

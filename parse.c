@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	find_duplicate(t_data *data, int val)
+static void	find_duplicate(t_data *data, int val)
 {
 	t_elem	*elem;
 	t_elem	*end;
@@ -22,26 +22,20 @@ static int	find_duplicate(t_data *data, int val)
 	while (elem->next != end)
 	{
 		if (elem->value == val)
-			return (0);
+			error(data);
 		elem = elem->next;
 	}
-	return (1);
 }
 
-static int	put_in_pile(t_data *data, char *nb, int neg)
+static void	put_in_pile(t_data *data, char *nb, int neg)
 {
-	long	val;
-	int		ok;
+	int	val;
 
-	val = ft_atoi(nb, neg);
-	if (val == INT_MAX)
-		return (0);
+	val = ft_atoi(data, nb, neg);
 	insert_end(data, 'a', val);
 	data->pile_len++;
-	ok = find_duplicate(data, val);
-	if (!ok)
-		return (0);
-	return (1);
+	find_duplicate(data, val);
+	free(nb);
 }
 
 static void	fill_a(t_data *data, char *s)
@@ -49,7 +43,6 @@ static void	fill_a(t_data *data, char *s)
 	int		neg;
 	char	*tmp;
 	char	*buf;
-	int		ok = 0;
 
 	tmp = NULL;
 	while (*s)
@@ -67,13 +60,7 @@ static void	fill_a(t_data *data, char *s)
 			while (ft_isdigit(*s))
 				s++;
 			buf = ft_substr(tmp, 0, s - tmp);
-			ok = put_in_pile(data, buf, neg);
-			if (!ok)
-			{
-				free(buf);
-				error(data);
-			}
-			free (buf);
+			put_in_pile(data, buf, neg);
 			if (*s && ((*s != ' ')))
 				error(data);
 		}
