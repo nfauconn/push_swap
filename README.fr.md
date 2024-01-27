@@ -9,6 +9,12 @@ Trier des données sur une pile en utilisant un ensemble limité d'instructions,
 
 ## 🚀 Utilisation 🚀
 
+```shell
+git clone git@github.com:nfauconn/push_swap.git
+cd Project
+make
+```
+
 Comment exécuter sur Bash :
 
 - Pour vérifier les instructions :
@@ -23,18 +29,20 @@ rra
 sb
 pa
 pa
+>
 ```
 
 - Pour vérifier le nombre d'instructions :
 ```shell
 > ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
-8
+>
 ```
 
 - Pour vérifier si la liste a été correctement triée :
 ```shell
 > ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 OK
+>
 ```
 
 ## 💡 Compétences 💡

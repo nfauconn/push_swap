@@ -9,6 +9,11 @@ Sort data on a stack using a limited set of instructions, with the least number 
 
 ## 🚀 Usage 🚀
 
+```shell
+git clone git@github.com:nfauconn/push_swap.git
+cd Project
+make
+```
 How to run on Bash:
 
 - To check the instructions:
@@ -23,18 +28,21 @@ rra
 sb
 pa
 pa
+>
 ```
 
 - To check the number of instructions:
 ```shell
 > ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 8
+>
 ```
 
 - To check if the list has been correctly sorted:
 ```shell
 > ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 OK
+>
 ```
 
 ## 💡 Skills 💡
