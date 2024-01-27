@@ -11,7 +11,7 @@ Trier des données sur une pile en utilisant un ensemble limité d'instructions,
 
 ```shell
 git clone git@github.com:nfauconn/push_swap.git
-cd Project
+cd push_swap/Project
 make
 ```
 

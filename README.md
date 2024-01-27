@@ -11,7 +11,7 @@ Sort data on a stack using a limited set of instructions, with the least number 
 
 ```shell
 git clone git@github.com:nfauconn/push_swap.git
-cd Project
+cd push_swap/Project
 make
 ```
 How to run on Bash:
