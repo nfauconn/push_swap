@@ -61,7 +61,6 @@ OK
 
 ## 📋 Sujet 📋
 
-Projet individuel
 
 ### Instructions Communes
 

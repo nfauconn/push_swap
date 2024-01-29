@@ -62,7 +62,6 @@ OK
 
 ## 📋 Subject 📋
 
-Solo project
 
 ### Common Instructions
 
