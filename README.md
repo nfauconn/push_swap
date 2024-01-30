@@ -5,6 +5,8 @@
 
 Sort data on a stack using a limited set of instructions, with the least number of actions possible. This involves manipulating various algorithms and choosing the most appropriate solution for optimized data sorting.
 
+*C Programming Language* • *Algorithmic Thinking* • *Complexity Analysis* • *C Language Proficiency* • *Double Circular Linked Lists* • *Error Management* • *Memory Management* • *Norm Compliance* • *Compilation Automation with Makefile*
+
 ## Usage
 
 ```shell
@@ -87,18 +89,3 @@ pa
 Error
 >
 ```
-
-## Skills
-
-- **Algorithmic Thinking**: Understand and compare sorting algorithms
-
-- **Complexity Analysis**: Analyzing and considering the complexity of different sorting methods
-
-- **C Language Proficiency**: Circular double linked list, memory management, pointer arithmetic, and general syntax
-
-- **Efficiency in Code**: Writing efficient code, looking for ways to optimize and improve the performance of algorithms
-
-- **Makefile Usage**: Using Makefiles for compiling, managing dependencies, and ensuring that the project structure is clean and organized
-
-- **Working with Constraints**: Work within the constraints of a project, adhering to the given specifications and rules
-
