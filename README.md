@@ -7,6 +7,7 @@
 
 Sort data on a stack using a limited set of instructions, with the least number of actions possible. This involves manipulating various algorithms and choosing the most appropriate solution for optimized data sorting.
 
+|||
 | --- | --- |
 | **Program Name** | `push_swap` |
 | **Turn in Files** | Makefile, *.h, *.c |
