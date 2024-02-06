@@ -38,7 +38,7 @@ Trier des données sur une pile en utilisant un ensemble limité d'instructions,
 
 ```shell
 git clone git@github.com:nfauconn/push_swap.git
-cd push_swap/Projet
+cd push_swap/Project
 make
 ```
 Comment exécuter sur Bash :
