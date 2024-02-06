@@ -13,6 +13,7 @@ Trier des données sur une pile en utilisant un ensemble limité d'instructions,
 | **Fichiers à rendre** | Makefile, *.h, *.c |
 | **Arguments** | Pile `a` sous forme de liste d'entiers (le premier argument doit être au sommet de la pile). |
 | **Fonctions externes autorisées** | `read`, `write`, `malloc`, `free`, `exit` |
+| **Variables globales autorisées** | Aucune |
 
 - Deux piles, `a` et `b`, sont utilisées.
 - Au départ :

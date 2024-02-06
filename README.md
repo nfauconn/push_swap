@@ -13,6 +13,7 @@ Sort data on a stack using a limited set of instructions, with the least number 
 | **Turn in Files** | Makefile, *.h, *.c |
 | **Arguments** | Stack `a` as a list of integers (the first argument should be at the top of the stack). |
 | **Authorized External Functions** | `read`, `write`, `malloc`, `free`, `exit` |
+| **Authorized Global Variables** | None |
 
 - Two stacks, `a` and `b`, are used.
 - At the start:
